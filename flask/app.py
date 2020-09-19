@@ -24,4 +24,17 @@ def index():
     '''
     The home route.
     '''
+    adasd
     return render_template('index.html', logged_in=cas.username is not None, username=cas.username)
+
+
+@app.errorhandler(Exception)
+def handle_error(e):
+    app.logger.exception(e)
+
+    # Hide error in production
+    error = e
+    if app.env == 'production':
+        error = 'Something went wrong... Please try again later.'
+
+    return render_template('error.html', error=error), 500
