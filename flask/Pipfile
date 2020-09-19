@@ -11,6 +11,7 @@ autopep8 = "*"
 flask = "*"
 flask-cas = "*"
 python-dotenv = "*"
+gunicorn = "*"
 
 [requires]
 python_version = "3.8"
