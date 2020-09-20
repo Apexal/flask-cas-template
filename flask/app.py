@@ -21,11 +21,14 @@ app.config['CAS_AFTER_LOGIN'] = 'index'
 
 @app.route('/')
 def index():
-    '''
-    The home route.
-    '''
-    adasd
+    '''The homepage.'''
     return render_template('index.html', logged_in=cas.username is not None, username=cas.username)
+
+
+@app.route('/about')
+def about():
+    '''The about page.'''
+    return render_template('about.html')
 
 
 @app.errorhandler(Exception)
