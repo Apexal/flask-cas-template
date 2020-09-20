@@ -25,6 +25,15 @@ def index():
     return render_template('index.html', logged_in=cas.username is not None, username=cas.username)
 
 
+@app.route('/form', methods=['POST'])
+def form():
+    if 'name' in request.form and request.form['name'] != '':
+        name = request.form['name']
+        return f'Hello, {name}'
+    else:
+        return 'You gave me no name!'
+
+
 @app.route('/about')
 def about():
     '''The about page.'''
@@ -34,6 +43,7 @@ def about():
 @app.errorhandler(Exception)
 def handle_error(e):
     '''Generic error handler that renders error template with message.'''
+    app.logger.error('An error occurred:')
     app.logger.exception(e)
 
     # Hide error in production
