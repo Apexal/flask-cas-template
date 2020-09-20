@@ -30,6 +30,7 @@ def index():
 
 @app.errorhandler(Exception)
 def handle_error(e):
+    '''Generic error handler that renders error template with message.'''
     app.logger.exception(e)
 
     # Hide error in production

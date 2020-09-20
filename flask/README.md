@@ -22,7 +22,7 @@ $ flask run
 ```
 
 ## Deployment
-Deployment is easiest on Heroku with the Procfile included in this template. Create a Heroku app from the Heroku Dashboard online.
+Deployment is easiest on Heroku with the Procfile included in this template. Create a Heroku app from the Heroku Dashboard online. For more details see [here](https://devcenter.heroku.com/articles/git).
 
 ### Connect Heroku app (once)
 ```bash
@@ -31,5 +31,5 @@ $ heroku git:remote -a <heroku-app-name>
 
 ### Deploy to Heroku
 ```bash
-$ git push heroku
+$ git push heroku master
 ```
