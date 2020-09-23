@@ -1,5 +1,5 @@
 import os
-from flask import Flask, g, session, request, render_template, redirect, url_for
+from flask import Flask, flash, g, session, request, render_template, redirect, url_for
 from flask_cas import CAS, login_required, logout
 from dotenv import load_dotenv
 from werkzeug.exceptions import HTTPException
@@ -33,9 +33,11 @@ def form():
     else:
         if 'name' in request.form and request.form['name'] != '':
             name = request.form['name']
-            return f'Hello, {name}'
+            flash('Hello, ' + name)
+        else:
+            flash('You didn\'t give a name!', 'error')
 
-        return 'You broke me...?'
+        return redirect(url_for('form'))
 
 
 @app.route('/about')

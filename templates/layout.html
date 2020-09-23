@@ -4,16 +4,28 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Flask + CAS</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{{ url_for("static", filename="style.css") }}">
     <meta name="author" content="Your Name">
     <meta name="description" content="A short description of your site!">
+    <title>Flask + CAS</title>
 </head>
 
 <body>
     <header>{% block header %}{% endblock %}</header>
-    <main>{% block content %}{% endblock %}</main>
+    <main>
+        {% with messages = get_flashed_messages(with_categories=True) %}
+        {% if messages %}
+        <ul class="flashes">
+            {% for category, message in messages %}
+            <li>{{ category}}: {{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+
+        {% block content %}{% endblock %}
+    </main>
     <footer>{% block footer %}{% endblock %}</footer>
 </body>
 
