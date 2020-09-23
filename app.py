@@ -23,17 +23,19 @@ app.config['CAS_AFTER_LOGIN'] = 'index'
 @app.route('/')
 def index():
     '''The homepage.'''
-    12 + 'asdas'
     return render_template('index.html', logged_in=cas.username is not None, username=cas.username)
 
 
-@app.route('/form', methods=['POST'])
+@app.route('/form', methods=['GET', 'POST'])
 def form():
-    if 'name' in request.form and request.form['name'] != '':
-        name = request.form['name']
-        return f'Hello, {name}'
+    if request.method == 'GET':
+        return render_template('form.html')
     else:
-        return 'You gave me no name!'
+        if 'name' in request.form and request.form['name'] != '':
+            name = request.form['name']
+            return f'Hello, {name}'
+
+        return 'You broke me...?'
 
 
 @app.route('/about')
