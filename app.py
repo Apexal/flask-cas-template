@@ -2,6 +2,7 @@ import os
 from flask import Flask, g, session, request, render_template, redirect, url_for
 from flask_cas import CAS, login_required, logout
 from dotenv import load_dotenv
+from werkzeug.exceptions import HTTPException
 
 # Loads any variables from the .env file
 load_dotenv()
@@ -22,6 +23,7 @@ app.config['CAS_AFTER_LOGIN'] = 'index'
 @app.route('/')
 def index():
     '''The homepage.'''
+    12 + 'asdas'
     return render_template('index.html', logged_in=cas.username is not None, username=cas.username)
 
 
@@ -41,14 +43,16 @@ def about():
 
 
 @app.errorhandler(Exception)
-def handle_error(e):
-    '''Generic error handler that renders error template with message.'''
-    app.logger.error('An error occurred:')
+def handle_exception(e):
+    '''Handles non-HTTP exceptions.'''
+    # Pass through HTTP errors
+    if isinstance(e, HTTPException):
+        return e
+
     app.logger.exception(e)
 
     # Hide error in production
-    error = e
     if app.env == 'production':
-        error = 'Something went wrong... Please try again later.'
+        e = 'Something went wrong... Please try again later.'
 
-    return render_template('error.html', error=error), 500
+    return render_template("error.html", error=e), 500
