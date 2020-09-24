@@ -51,7 +51,7 @@ def form():
     else:
         if 'name' in request.form and request.form['name'] != '':
             name = request.form['name']
-            flash('Hello, ' + name)
+            flash('Hello, ' + name, 'info')
         else:
             abort(400)
 

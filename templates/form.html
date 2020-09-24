@@ -1,9 +1,12 @@
 {% extends 'layout.html' %}
 {% block content %}
 <div class="container">
+  <h1 class="title">Form</h1>
   <form action="/form" method="POST">
-    <input type="text" name="name" placeholder="Name">
-    <button>Submit</button>
+    <div class="form-group">
+      <input class="form-control" type="text" name="name" placeholder="Name">
+    </div>
+    <button class="btn btn-primary">Submit</button>
   </form>
 </div>
 {% endblock %}
