@@ -29,11 +29,11 @@
   <main class="my-5">
     {% with messages = get_flashed_messages(with_categories=True) %}
     {% if messages %}
-    <ul class="flashes">
+    <div class="container flashes">
       {% for category, message in messages %}
-      <li>{{ category}}: {{ message }}</li>
+      <div class="alert alert-{{ category }}" role="alert">{{ message }}</div>
       {% endfor %}
-    </ul>
+    </div>
     {% endif %}
     {% endwith %}
 

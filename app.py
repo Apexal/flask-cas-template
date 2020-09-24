@@ -52,7 +52,7 @@ def form():
             name = request.form['name']
             flash('Hello, ' + name)
         else:
-            flash('You didn\'t give a name!', 'error')
+            flash('You didn\'t give a name!', 'danger')
 
         return redirect(url_for('form'))
 
