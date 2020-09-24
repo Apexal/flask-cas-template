@@ -20,10 +20,27 @@ app.config['CAS_SERVER'] = 'https://cas-auth.rpi.edu/cas'
 app.config['CAS_AFTER_LOGIN'] = 'index'
 
 
+@app.before_request
+def before_request():
+    g.logged_in = cas.username is not None
+
+
+@app.context_processor
+def add_template_locals():
+    '''
+    This is run before rendering any template.
+    It allows every template to know if the user is logged in or not.
+    '''
+    return {
+        'logged_in': g.logged_in,
+        'username': cas.username
+    }
+
+
 @app.route('/')
 def index():
     '''The homepage.'''
-    return render_template('index.html', logged_in=cas.username is not None, username=cas.username)
+    return render_template('index.html')
 
 
 @app.route('/form', methods=['GET', 'POST'])
