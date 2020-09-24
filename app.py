@@ -1,5 +1,5 @@
 import os
-from flask import Flask, flash, g, session, request, render_template, redirect, url_for
+from flask import Flask, abort, flash, g, session, request, render_template, redirect, url_for
 from flask_cas import CAS, login_required, logout
 from dotenv import load_dotenv
 from werkzeug.exceptions import HTTPException
@@ -22,6 +22,7 @@ app.config['CAS_AFTER_LOGIN'] = 'index'
 
 @app.before_request
 def before_request():
+    '''Runs before every request.'''
     g.logged_in = cas.username is not None
 
 
@@ -52,7 +53,7 @@ def form():
             name = request.form['name']
             flash('Hello, ' + name)
         else:
-            flash('You didn\'t give a name!', 'danger')
+            abort(400)
 
         return redirect(url_for('form'))
 
@@ -81,4 +82,5 @@ def handle_exception(e):
 
 @app.errorhandler(404)
 def page_not_found(e):
+    '''Render 404 page.'''
     return render_template('404.html'), 404
