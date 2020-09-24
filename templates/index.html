@@ -1,9 +1,11 @@
 {% extends 'layout.html' %}
 {% block content %}
-{% if logged_in %}
-<h1>Hello, {{ username }}!</h1>
-<a href="/cas/logout">Logout</a>
-{% else %}
-<a href="/cas/login">Login</a>
-{% endif %}
+<div class="container">
+  {% if logged_in %}
+  <h1>Hello, {{ username }}!</h1>
+  <a href="/cas/logout">Logout</a>
+  {% else %}
+  <a href="/cas/login">Login</a>
+  {% endif %}
+</div>
 {% endblock %}
