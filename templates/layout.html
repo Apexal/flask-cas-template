@@ -27,16 +27,7 @@
 <body>
   <header>{% include 'includes/navbar.html' %}</header>
   <main class="my-5">
-    {% with messages = get_flashed_messages(with_categories=True) %}
-    {% if messages %}
-    <div class="container flashes">
-      {% for category, message in messages %}
-      <div class="alert alert-{{ category }}" role="alert">{{ message }}</div>
-      {% endfor %}
-    </div>
-    {% endif %}
-    {% endwith %}
-
+    {% include 'includes/flashes.html' %}
     {% block content %}{% endblock %}
   </main>
   <footer class="bg-light text-secondary py-5">
