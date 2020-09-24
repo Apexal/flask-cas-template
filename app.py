@@ -77,3 +77,8 @@ def handle_exception(e):
         e = 'Something went wrong... Please try again later.'
 
     return render_template("error.html", error=e), 500
+
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
