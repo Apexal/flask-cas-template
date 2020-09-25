@@ -64,23 +64,25 @@ def about():
     return render_template('about.html')
 
 
-@app.errorhandler(Exception)
-def handle_exception(e):
-    '''Handles non-HTTP exceptions.'''
-    # Pass through HTTP errors
-    if isinstance(e, HTTPException):
-        return e
-
-    app.logger.exception(e)
-
-    # Hide error in production
-    if app.env == 'production':
-        e = 'Something went wrong... Please try again later.'
-
-    return render_template("error.html", error=e), 500
-
-
 @app.errorhandler(404)
 def page_not_found(e):
     '''Render 404 page.'''
     return render_template('404.html'), 404
+
+
+@app.errorhandler(Exception)
+def handle_exception(e):
+    '''Handles all other exceptions.'''
+
+    # Handle HTTP errors
+    if isinstance(e, HTTPException):
+        return render_template("error.html", error=e), e.code
+
+    # Handle non-HTTP errors
+    app.logger.exception(e)
+
+    # Hide error details in production
+    if app.env == 'production':
+        e = 'Something went wrong... Please try again later.'
+
+    return render_template("error.html", error=e), 500
