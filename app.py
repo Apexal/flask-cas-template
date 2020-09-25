@@ -1,6 +1,6 @@
 import os
 from flask import Flask, abort, flash, g, session, request, render_template, redirect, url_for
-from flask_cas import CAS, login_required, logout
+from flask_cas import CAS, login_required
 from dotenv import load_dotenv
 from werkzeug.exceptions import HTTPException
 
@@ -50,6 +50,7 @@ def index():
 
 
 @app.route('/form', methods=['GET', 'POST'])
+@login_required
 def form():
     '''Sample form route.'''
 

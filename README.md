@@ -2,24 +2,26 @@
 
 A barebones Flask app using CAS for authentication.
 
-## Development
+## Features
+- Flask
+- CAS authentication
+- Bootstrap
+    - Template with navbar and footer included
+    - Other utils like macros and flash messages included
 
-### Activate environment
-```bash
-$ pipenv shell
-```
+## Setup
 
-### Dependencies
-This template uses `pipenv` to manage dependencies. Install new dependencies with `$ pipenv install <package-name>` and reinstall all listed dependencies with `$ pipenv install`. Read more about pipenv [here](https://github.com/pypa/pipenv).
+1. Create a repo from this template and clone it locally
+2. Activate the [pipenv](https://github.com/pypa/pipenv) environment with `$ pipenv shell`
+3. Install packages with `$ pipenv install`
+4. Create the `.env` file in the root folder with the keys from `.env.example`
 
-### Environment Variables
-Create a `.env` file based on `.env.example` and change the placeholder values. The app loads all variables in `.env` into `os.environ`.
-
-### Running
+## Running
 Run the app in development mode with
 ```bash
 $ flask run
 ```
+It will automatically restart when in development mode if you change files.
 
 ## Deployment
 Deployment is easiest on Heroku with the Procfile included in this template. Create a Heroku app from the Heroku Dashboard online. For more details see [here](https://devcenter.heroku.com/articles/git).
@@ -33,3 +35,6 @@ $ heroku git:remote -a <heroku-app-name>
 ```bash
 $ git push heroku master
 ```
+
+## Screenshots
+![index](https://snipboard.io/qFNKIE.jpg)
