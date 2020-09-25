@@ -85,7 +85,7 @@ def handle_exception(e):
 
     # Handle HTTP errors
     if isinstance(e, HTTPException):
-        return render_template("error.html", error=e), e.code
+        return render_template('error.html', error=e), e.code
 
     # Handle non-HTTP errors
     app.logger.exception(e)

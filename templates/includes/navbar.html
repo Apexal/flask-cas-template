@@ -1,6 +1,14 @@
+{% macro nav_item(name, path) -%}
+<a class="nav-link {% if request.path == path %}active{% endif %}" href="{{ path }}">{{ name }}</a>
+{%- endmacro %}
+
+{% macro dropdown_item(name, path) -%}
+<a class="dropdown-item {% if request.path == path %}active{% endif %}" href="{{ path }}">{{ name }}</a>
+{%- endmacro %}
+
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container">
-
     <a class="navbar-brand" href="#">Flask + CAS</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#top-navbar-content">
       <span class="navbar-toggler-icon"></span>
@@ -8,9 +16,9 @@
 
     <div class="collapse navbar-collapse" id="top-navbar-content">
       <div class="navbar-nav mr-auto">
-        <a class="nav-link active" href="{{ url_for('index') }}">Home</a>
-        <a class="nav-link" href="{{ url_for('about') }}">About</a>
-        <a class="nav-link" href="{{ url_for('form') }}">Form</a>
+        {{ nav_item('Home', url_for('index')) }}
+        {{ nav_item('About', url_for('about')) }}
+        {{ nav_item('Form', url_for('form')) }}
       </div>
 
       <div class="navbar-nav">
@@ -20,7 +28,7 @@
             Logged in as <b>{{ username }}</b>
           </a>
           <div class="dropdown-menu dropdown-menu-right">
-            <a class="dropdown-item" href="/cas/logout">Logout</a>
+            {{ dropdown_item('Logout', '/cas/logout') }}
           </div>
         </div>
         {% else %}
