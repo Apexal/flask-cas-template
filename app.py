@@ -17,6 +17,9 @@ cas = CAS(app, '/cas')
 # This must be a RANDOM string you generate once and keep secret
 app.secret_key = os.environ.get('FLASK_SECRET_KEY')
 
+# Used in templates
+app.config['APP_TITLE'] = 'Flask + CAS'
+
 # Must be set to this to use RPI CAS
 app.config['CAS_SERVER'] = 'https://cas-auth.rpi.edu/cas'
 
