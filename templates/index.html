@@ -2,17 +2,24 @@
 {% block content %}
 <div class="container">
   {% if logged_in %}
-  <h1>Hello, {{ username }}!</h1>
+  <h1 class="display-3">Hello, {{ username }}!</h1>
+  <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor at maiores iste, assumenda, doloremque
+    eum commodi dolore.</p>
+
+  <h3>Another Header</h3>
+  <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore similique ad error delectus, quo maiores, mollitia
+    cum dolorum consectetur possimus suscipit eaque eligendi, assumenda eos itaque consequuntur eum soluta consequatur
+    praesentium atque numquam eveniet. Dolorum quia quae explicabo cumque illum accusantium doloremque. Iste reiciendis
+    ad obcaecati aspernatur ducimus libero culpa.</p>
   <a href="/cas/logout">Logout</a>
   {% else %}
-  <div class="jumbotron">
-    <h1 class="display-4">Hello, world!</h1>
-    <p class="lead">This is a simple Flask + CAS template you can use for RCOS projects or student projects in general.
-    </p>
-    <hr class="my-4">
-    <p>Feel free to create a repo based on this template and then build off of it!</p>
-    <a class="btn btn-primary btn-lg" href="https://github.com/Apexal/flask-cas-template" role="button">Go to repo</a>
-  </div>
+  <h1 class="display-4">Hello, world!</h1>
+  <p class="lead">This is a simple Flask + CAS template you can use for RCOS projects or student projects in general.
+  </p>
+  <hr class="my-4">
+  <p>Feel free to create a repo based on this template and then build off of it! You can deploy it for free with Heroku.
+    Check the repo documentation for details.</p>
+  <a class="btn btn-primary btn-lg" href="https://github.com/Apexal/flask-cas-template" role="button">Go to repo</a>
   {% endif %}
 </div>
 {% endblock %}
