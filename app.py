@@ -98,4 +98,4 @@ def handle_exception(e):
     if app.env == 'production':
         e = 'Something went wrong... Please try again later.'
 
-    return render_template("error.html", error=e), 500
+    return render_template('error.html', error=e), 500
