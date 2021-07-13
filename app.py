@@ -78,7 +78,7 @@ def about():
 
 
 @app.errorhandler(404)
-def page_not_found():
+def page_not_found(e):
     '''Render 404 page.'''
     return render_template('404.html'), 404
 
@@ -98,4 +98,4 @@ def handle_exception(e):
     if app.env == 'production':
         e = 'Something went wrong... Please try again later.'
 
-    return render_template("error.html", error=e), 500
+    return render_template('error.html', error=e), 500
