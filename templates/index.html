@@ -1,18 +1,66 @@
 {% extends 'layout.html' %}
 {% block content %}
+
+
+{% if logged_in %}
 <div class="container">
-  {% if logged_in %}
   <h1>Hello, {{ username }}!</h1>
   <a href="/cas/logout">Logout</a>
-  {% else %}
-  <div class="jumbotron">
-    <h1 class="display-4">Hello, world!</h1>
+</div>
+{% else %}
+<div class="splash d-flex justify-content-center align-items-center">
+  <div class="text-white text-center">
+    <h1 class="display-2">Hello World</h1>
     <p class="lead">This is a simple Flask + CAS template you can use for RCOS projects or student projects in general.
     </p>
-    <hr class="my-4">
-    <p>Feel free to create a repo based on this template and then build off of it!</p>
-    <a class="btn btn-primary btn-lg" href="https://github.com/Apexal/flask-cas-template" role="button">Go to repo</a>
+    <a href="https://github.com/Apexal/flask-cas-template" target="_blank" class="btn btn-primary btn-lg"><i
+        class="bi bi-github"></i> Explore</a>
   </div>
-  {% endif %}
 </div>
+<div class="container">
+
+<div class="pt-5">
+    <h1>Built In Features</h1>
+    <div class="row">
+      <div class="col-xs-12 col-md-4">
+        <div class="card feature-card text-center">
+          <div class="card-body">
+            <div class="icon">
+              <i class="bi bi-person-check-fill"></i>
+            </div>
+            <h3>CAS Auth</h3>
+            <p class="card-text">Allows students (and faculty) to login with a <code>@rpi.edu</code> email address! Can restrict access to only verified RPI members.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xs-12 col-md-4">
+        <div class="card feature-card text-center">
+          <div class="card-body">
+            <div class="icon">
+              <i class="bi bi-bootstrap-fill"></i>
+            </div>
+            <h3>Bootstrap</h3>
+            <p class="card-text">Customize the Bootstrap theme to make a unique design without wasting time reinventing the wheel a million times!</p>
+            <a href="https://getbootstrap.com/" target="_blank" class="card-link">Bootstrap docs</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xs-12 col-md-4">
+        <div class="card feature-card text-center">
+          <div class="card-body">
+            <div class="icon">
+              <i class="bi bi-code-square"></i>
+            </div>
+            <h3>Python + Flask</h3>
+            <p class="card-text">Use of the greatest web languages in the world, with one of the greatest micro web frameworks for the language!</p>
+            <a href="https://flask.palletsprojects.com/en/2.0.x/" target="_blank" class="card-link">Flask docs</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
 {% endblock %}
