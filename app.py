@@ -21,7 +21,7 @@ app.secret_key = os.environ.get('FLASK_SECRET_KEY')
 app.config['APP_TITLE'] = 'Flask + CAS'
 
 # Must be set to this to use RPI CAS
-app.config['CAS_SERVER'] = 'https://cas-auth.rpi.edu/cas'
+app.config['CAS_SERVER'] = 'https://cas.auth.rpi.edu/cas'
 
 # What route to go to after logging in
 app.config['CAS_AFTER_LOGIN'] = 'index'
